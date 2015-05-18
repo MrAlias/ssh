@@ -60,7 +60,7 @@ class { 'ssh::client': }
 
 The main ssh class is not meant to be called directly.  Rather it acts as a basis for the client and server classes.
 
-##### `ssh::base_packages*`
+##### `ssh::base_packages`
 
 Array of all the distribution specific universally required packages.
 
