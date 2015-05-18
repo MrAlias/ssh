@@ -1,0 +1,84 @@
+Port <%= @port ? @port : 22 %>
+ListenAddress <%= @listen_address %>
+
+Protocol <%= @protocol %>
+<% @host_keys.each do |key| -%>
+HostKey <%= key %>
+<% end -%>
+
+#Privilege Separation is turned on for security
+UsePrivilegeSeparation <%= @use_privilege_separation ? 'yes' : 'no' %>
+
+# Lifetime and size of ephemeral version 1 server key
+KeyRegenerationInterval <%= @key_regeneration_interval %>
+ServerKeyBits <%= @server_key_bits %>
+
+# Logging
+SyslogFacility <%= @syslog_facility %>
+LogLevel <%= @log_level %>
+
+# Authentication:
+LoginGraceTime <%= @login_grace_time %>
+PermitRootLogin <%= @permit_root_login %>
+StrictModes <%= @strict_modes ? 'yes' : 'no' %>
+
+RSAAuthentication <%= @rsa_authentication ? 'yes' : 'no' %>
+PubkeyAuthentication <%= @pubkey_authentication ? 'yes' : 'no' %>
+AuthorizedKeysFile <%= @authorized_keys_file %>
+
+# Don't read the user's ~/.rhosts and ~/.shosts files
+IgnoreRhosts <%= @ignore_rhosts ? 'yes' : 'no' %>
+# For this to work you will also need host keys in /etc/ssh_known_hosts
+RhostsRSAAuthentication <%= @rhosts_RSA_authentication ? 'yes' : 'no' %>
+# similar for protocol version 2
+HostbasedAuthentication <%= @hostbased_authentication ? 'yes' : 'no' %>
+IgnoreUserKnownHosts <%= @ignore_user_known_hosts ? 'yes' : 'no' %>
+
+# To enable empty passwords, change to yes (NOT RECOMMENDED)
+PermitEmptyPasswords <%= @permit_empty_passwords ? 'yes' : 'no' %>
+
+# Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+ChallengeResponseAuthentication <%= @challenge_response_authentication ? 'yes' : 'no' %>
+
+# Change to no to disable tunnelled clear text passwords
+PasswordAuthentication <%= @password_authentication ? 'yes' : 'no' %>
+
+# Kerberos options
+KerberosAuthentication <%= @kerberos_authentication ? 'yes' : 'no' %>
+KerberosGetAFSToken <%= @kerberos_get_AFS_token ? 'yes' : 'no' %>
+KerberosOrLocalPasswd <%= @kerberos_or_local_passwd ? 'yes' : 'no' %>
+KerberosTicketCleanup <%= @kerberos_ticket_cleanup ? 'yes' : 'no' %>
+
+# GSSAPI options
+GSSAPIAuthentication <%= @gssapi_authentication ? 'yes' : 'no' %>
+GSSAPICleanupCredentials <%= @gssapi_cleanup_credentials ? 'yes' : 'no' %>
+
+X11Forwarding <%= @x11_forwarding ? 'yes' : 'no' %>
+<% if @x11_forwarding and @x11_display_offset -%>
+X11DisplayOffset <%= @x11_display_offset %>
+<% end -%>
+PrintMotd <%= @print_motd ? 'yes' : 'no' %>
+PrintLastLog <%= @print_last_log ? 'yes' : 'no' %>
+TCPKeepAlive <%= @tcp_keep_alive ? 'yes' : 'no' %>
+UseLogin <%= @use_login ? 'yes' : 'no' %>
+
+MaxStartups <%= @max_startups %>
+Banner <%= @banner %>
+
+# Allow client to pass locale environment variables
+
+<% if @accept_env -%>
+AcceptEnv <%= @accept_env.join(' ') %>
+<% end -%>
+
+# Set this to 'yes' to enable PAM authentication, account processing,
+# and session processing. If this is enabled, PAM authentication will
+# be allowed through the ChallengeResponseAuthentication and
+# PasswordAuthentication.  Depending on your PAM configuration,
+# PAM authentication via ChallengeResponseAuthentication may bypass
+# the setting of "PermitRootLogin without-password".
+# If you just want the PAM account and session checks to run without
+# PAM authentication, then enable this but set PasswordAuthentication
+# and ChallengeResponseAuthentication to 'no'.
+UsePAM <%= @use_PAM ? 'yes' : 'no' %>
