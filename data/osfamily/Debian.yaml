@@ -1,0 +1,3 @@
+---
+ssh::client::package_name: 'openssh-client'
+ssh::server::service_name: 'ssh'
