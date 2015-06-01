@@ -45,10 +45,14 @@ ChallengeResponseAuthentication <%= @challenge_response_authentication ? 'yes' :
 PasswordAuthentication <%= @password_authentication ? 'yes' : 'no' %>
 
 # Kerberos options
-KerberosAuthentication <%= @kerberos_authentication ? 'yes' : 'no' %>
+<% if @kerberos_authentication -%>
+KerberosAuthentication yes
 KerberosGetAFSToken <%= @kerberos_get_AFS_token ? 'yes' : 'no' %>
 KerberosOrLocalPasswd <%= @kerberos_or_local_passwd ? 'yes' : 'no' %>
 KerberosTicketCleanup <%= @kerberos_ticket_cleanup ? 'yes' : 'no' %>
+<% else -%>
+KerberosAuthentication no
+<% end -%>
 
 # GSSAPI options
 GSSAPIAuthentication <%= @gssapi_authentication ? 'yes' : 'no' %>
