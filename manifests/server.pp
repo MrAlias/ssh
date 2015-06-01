@@ -169,7 +169,7 @@ class ssh::server (
   $print_motd                        = hiera("${module_name}::server::print_motd", false),
   $print_last_log                    = hiera("${module_name}::server::print_last_log", true),
   $tcp_keep_alive                    = hiera("${module_name}::server::tcp_keep_alive", true),
-  $use_login                         = hiera("${module_name}::server::use_login", true),
+  $use_login                         = hiera("${module_name}::server::use_login", false),
   $max_startups                      = hiera("${module_name}::server::max_startups", '10:30:60'),
   $banner                            = hiera("${module_name}::server::banner", '/etc/issue.net'),
   $accept_env                        = hiera_array("${module_name}::server::accept_env", [ 'LANG', 'LC_*', ]),

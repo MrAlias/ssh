@@ -298,7 +298,7 @@ Defaults to `true`.
 
 Specifies whether the login service is used for interactive login sessions.
 
-Defaults to `true`.
+Defaults to `false`.
 
 ##### `ssh::server::max_startups`
 
