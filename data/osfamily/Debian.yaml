@@ -2,3 +2,7 @@
 ssh::client::package_name: 'openssh-client'
 ssh::server::service_name: 'ssh'
 ssh::server::use_privilege_separation: 'yes'
+ssh::server::host_keys:
+  - '/etc/ssh/ssh_host_rsa_key'
+  - '/etc/ssh/ssh_host_dsa_key'
+  - '/etc/ssh/ssh_host_ecdsa_key'

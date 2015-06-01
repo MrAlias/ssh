@@ -114,8 +114,6 @@ Defaults to `2`.
 
 Array of file paths for the host authentication keys.
 
-Defaults to `['/etc/ssh/ssh_host_rsa_key', '/etc/ssh/ssh_host_dsa_key', '/etc/ssh/ssh_host_ecdsa_key']`.
-
 ##### `ssh::server::use_privilege_separation`
 
 Specifies whether the OpenSSH server separates privileges by creating an unprivileged child process to deal with incoming network traffic. After successful authentication, another process will be created that has the privilege of the authenticated user. The goal of privilege separation is to prevent privilege escalation by containing any corruption within the unprivileged processes.

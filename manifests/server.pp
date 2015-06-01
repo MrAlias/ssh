@@ -139,7 +139,7 @@ class ssh::server (
   $port                              = hiera("${module_name}::server::port", 22),
   $listen_address                    = hiera("${module_name}::server::listen_address", '0.0.0.0'),
   $protocol                          = hiera("${module_name}::server::protocol", 2),
-  $host_keys                         = hiera_array("${module_name}::server::host_keys", [ '/etc/ssh/ssh_host_rsa_key', '/etc/ssh/ssh_host_dsa_key', '/etc/ssh/ssh_host_ecdsa_key', ]),
+  $host_keys                         = hiera_array("${module_name}::server::host_keys", ['/etc/ssh/ssh_host_dsa_key', '/etc/ssh/ssh_host_ecdsa_key', '/etc/ssh/ssh_host_ed25519_key', '/etc/ssh/ssh_host_rsa_key']),
   $use_privilege_separation          = hiera("${module_name}::server::use_privilege_separation", 'yes'),
   $key_regeneration_interval         = hiera("${module_name}::server::key_regeneration_interval", 3600),
   $server_key_bits                   = hiera("${module_name}::server::server_key_bits", 768),
