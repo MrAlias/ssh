@@ -140,7 +140,7 @@ class ssh::server (
   $listen_address                    = hiera("${module_name}::server::listen_address", '0.0.0.0'),
   $protocol                          = hiera("${module_name}::server::protocol", 2),
   $host_keys                         = hiera_array("${module_name}::server::host_keys", [ '/etc/ssh/ssh_host_rsa_key', '/etc/ssh/ssh_host_dsa_key', '/etc/ssh/ssh_host_ecdsa_key', ]),
-  $use_privilege_separation          = hiera("${module_name}::server::use_privilege_separation", true),
+  $use_privilege_separation          = hiera("${module_name}::server::use_privilege_separation", 'yes'),
   $key_regeneration_interval         = hiera("${module_name}::server::key_regeneration_interval", 3600),
   $server_key_bits                   = hiera("${module_name}::server::server_key_bits", 768),
   $syslog_facility                   = hiera("${module_name}::server::syslog_facility", 'AUTH'),
@@ -196,7 +196,7 @@ class ssh::server (
   validate_re($x11_display_offset, ['^\d+$', ''])
   validate_array($host_keys)
   validate_array($accept_env)
-  validate_bool($use_privilege_separation)
+  validate_re($use_privilege_separation, ['yes', 'no', 'sandbox'])
   validate_bool($strict_modes)
   validate_bool($rsa_authentication)
   validate_bool($pubkey_authentication)

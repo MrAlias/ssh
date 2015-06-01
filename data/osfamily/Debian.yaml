@@ -1,3 +1,4 @@
 ---
 ssh::client::package_name: 'openssh-client'
 ssh::server::service_name: 'ssh'
+ssh::server::use_privilege_separation: 'yes'

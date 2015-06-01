@@ -1,5 +1,6 @@
 ---
 ssh::client::package_name: 'openssh-clients'
 ssh::server::service_name: 'sshd'
+ssh::server::use_privilege_separation: 'sandbox'
 ssh::base_packages:
   - openssh

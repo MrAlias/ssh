@@ -7,7 +7,7 @@ HostKey <%= key %>
 <% end -%>
 
 #Privilege Separation is turned on for security
-UsePrivilegeSeparation <%= @use_privilege_separation ? 'yes' : 'no' %>
+UsePrivilegeSeparation <%= @use_privilege_separation %>
 
 # Lifetime and size of ephemeral version 1 server key
 KeyRegenerationInterval <%= @key_regeneration_interval %>
